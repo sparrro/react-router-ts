@@ -1,7 +1,7 @@
 type Props = {};
 
 const Contact = (props: Props) => {
-  return <div>Yeii det funkade</div>;
+  return <div>Contact</div>;
 };
 
 export default Contact;
