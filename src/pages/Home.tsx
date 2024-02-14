@@ -1,9 +1,13 @@
-import Nav from "../components/Nav/Nav";
+import Products from "../components/Products/Products";
 
 type Props = {};
 
 const Home = (props: Props) => {
-  return <></>;
+  return (
+    <>
+      <Products />
+    </>
+  );
 };
 
 export default Home;
