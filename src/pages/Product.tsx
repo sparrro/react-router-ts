@@ -3,6 +3,7 @@ import { Props } from "../components/Card/Card";
 import { data, imageString } from "../components/constants/constants";
 import "./product.scss";
 import { useState } from "react";
+import { useCountStore } from "../store/count";
 
 //Efter att ett villkor är mött, ska vi rendera produktinformationen.
 
@@ -11,6 +12,8 @@ import { useState } from "react";
 const Product = () => {
   const { id } = useParams();
   const [show, setShow] = useState(false);
+  /*   const [count, setCount] = useState<number>(0); */
+  const { count, decrement, increment } = useCountStore();
 
   const pokemon = data.find((pokemon) => pokemon.id === id);
 
@@ -30,6 +33,13 @@ const Product = () => {
           <>
             <h4>{name}</h4>
             <p>{desc}</p>
+            <div className="add-to-cart">
+              <button disabled={count < 1} onClick={decrement}>
+                -
+              </button>
+              <p>{count}</p>
+              <button onClick={increment}>+</button>
+            </div>
           </>
         )}
         <button onClick={handleClick}>{buttonText}</button>
