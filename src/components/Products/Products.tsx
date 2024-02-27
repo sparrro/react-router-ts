@@ -11,6 +11,7 @@ const Products = (props: Props) => {
       name={pokemon.name}
       desc={pokemon.desc}
       buttonText={pokemon.buttonText}
+      key={pokemon.id}
     />
   ));
   return (

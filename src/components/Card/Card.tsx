@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./card.scss";
+import { Product, useCartStore } from "../../store/cart";
 
 export type Props = {
   id: number | string;
@@ -8,14 +9,17 @@ export type Props = {
   buttonText: string;
 };
 
-const Card = ({ id, name, desc, buttonText }: Props) => {
+const Card = (product: Product) => {
   const navigate = useNavigate();
 
+  const {cart, addProduct} = useCartStore()
+
   return (
-    <article key={id} className="card">
-      <h4>{name}</h4>
-      <p>{desc}</p>
-      <button onClick={() => navigate(`product/${id}`)}>{buttonText}</button>
+    <article key={product.id} className="card">
+      <h4>{product.name}</h4>
+      <p>{product.desc}</p>
+      <button onClick={() => navigate(`product/${product.id}`)}>{product.buttonText}</button>
+      <button onClick={() => addProduct(product)}>Add to Cart</button>
     </article>
   );
 };
