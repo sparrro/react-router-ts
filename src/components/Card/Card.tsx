@@ -12,7 +12,7 @@ export type Props = {
 const Card = (product: Product) => {
   const navigate = useNavigate();
 
-  const {cart, addProduct} = useCartStore()
+  const addProduct = useCartStore((state) => state.addProduct)
 
   return (
     <article key={product.id} className="card">
